@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: flamma
+      POSTGRES_USER: flamma_db_superuser
+      POSTGRES_PASSWORD: sqwerty1488!
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    environment:
+      DB_HOST: db
+      DB_NAME: flamma
+      DB_USERNAME: flamma_db_user
+      DB_PASSWORD: sqwerty1488
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
