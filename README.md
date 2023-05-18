@@ -1,24 +1,17 @@
-# README
+# Flamma installation guide
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is flamma installation guide using Docker Compose
 
-Things you may want to cover:
+* Install **docker-compose** on your system
 
-* Ruby version
+* Check if it is installed successfully (type `docker-compose ps`)
 
-* System dependencies
+* Run `docker-compose up --build`
 
-* Configuration
+* Enter docker container by running `docker exec -it flamma-web-1 bash`
+  * Create db flamma: `bin/rails db:create`
+  * Exit docker container: `exit`
 
-* Database creation
+* Rebuild docker containers: `docker-compose down && docker-compose up --build`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Finally Go to http://0.0.0.0:3000
