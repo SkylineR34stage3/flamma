@@ -17,8 +17,8 @@ services:
     environment:
       DB_HOST: db
       DB_NAME: flamma
-      DB_USERNAME: flamma_db_user
-      DB_PASSWORD: sqwerty1488
+      DB_USERNAME: flamma_db_superuser
+      DB_PASSWORD: sqwerty1488!
     volumes:
       - .:/myapp
     ports:
