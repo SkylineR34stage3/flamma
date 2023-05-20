@@ -11,32 +11,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :lastname, class: "form-label" %>
+    <%= form.text_field :lastname, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :lastname, style: "display: block" %>
-    <%= form.text_field :lastname %>
-  </div>
-
-  <div>
-    <%= form.label :comments, style: "display: block" %>
-    <%= form.number_field :comments %>
-  </div>
-
-  <div>
-    <%= form.label :role_id, style: "display: block" %>
-    <%= form.number_field :role_id %>
-  </div>
-
-  <div>
-    <%= form.label :posts, style: "display: block" %>
-    <%= form.number_field :posts %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary"%>
   </div>
 <% end %>

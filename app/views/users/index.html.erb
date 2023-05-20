@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Users</h1>
+<h2>Users</h2>
 
-<div id="users">
+<%= link_to "New user", new_user_path, class: "btn btn-primary" %>
+
+<div class="row" id="users">
   <% @users.each do |user| %>
-    <%= render user %>
-    <p>
+    <div class="col-md my-2">
+      <%= render user %>
       <%= link_to "Show this user", user %>
-    </p>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New user", new_user_path %>
