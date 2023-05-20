@@ -2,13 +2,13 @@
 
 <h1>Posts</h1>
 
-<div id="posts">
+<%= link_to "Drop new post", new_post_path, class: "btn btn-primary" %>
+
+<div class="row" id="posts">
   <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
+    <div class="col-md my-2">
+      <%= render post %>
+        <%= link_to "Show this post", post %>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New post", new_post_path %>

@@ -11,37 +11,28 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :subtitle, style: "display: block" %>
-    <%= form.text_field :subtitle %>
+  <div class="mb-3">
+    <%= form.label :subtitle, class: "form-label" %>
+    <%= form.text_field :subtitle, class: "form-control"  %>
   </div>
 
-  <div>
-    <%= form.label :bich_text, style: "display: block" %>
-    <%= form.text_field :bich_text %>
+  <div class="mb-3">
+    <%= form.label :bich_text, class: "form-label" %>
+    <%= form.text_field :bich_text, class: "form-control"  %>
   </div>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
-  </div>
+<!--  <div class="mb-3">-->
+    <%#= form.label :category, style: "display: block" %>
+    <%#= form.number_field :category %>
+<!--  </div>-->
 
   <div>
-    <%= form.label :comments, style: "display: block" %>
-    <%= form.number_field :comments %>
-  </div>
-
-  <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.number_field :category %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
