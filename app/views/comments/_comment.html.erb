@@ -1,5 +1,23 @@
-<hr />
 <div id="<%= dom_id comment %>">
   <p><%= comment.text %></p>
   <small><%= comment.user.email %></small>
+
+  <a href="#" class="comment-form-display">Reply</a>
+  <div class="comment-form" style="display: none">
+    <%= render partial: 'comments/form', locals: {post: comment.post, parent: comment} %>
+  </div>
+
+  <hr />
+  <div class="sub-comment" style="padding-left:20px;">
+    <%= render comment.comments.order(id: :desc) %>
+  </div>
 </div>
+
+<script>
+  document.querySelectorAll('.comment-form-display').forEach((el) => {
+      el.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          el.nextElementSibling.style = 'display: block;'
+      })
+  })
+</script>
