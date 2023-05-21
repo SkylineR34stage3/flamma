@@ -18,6 +18,7 @@
           <h6 class="card-subtitle mb-2 text-body-secondary"><%= post.subtitle %>(<%= Category.find(post.category).category %>)</h6>
           <p class="card-text"><%= post.bich_text %></p>
           <p class="card-text">by: <%= User.find(post.user_id).name %></p>
+          <p class="card-text">total Comments: <%= post.comments.size %></p>
           <%= link_to "Show this post", post %>
         </div>
       </div>
