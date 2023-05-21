@@ -94,6 +94,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     faraday (2.7.4)
       faraday-net_http (>= 2.0, < 3.1)
@@ -265,11 +269,12 @@ DEPENDENCIES
   capybara
   debug
   devise
+  dotenv-rails
   importmap-rails
   jbuilder
   omniauth
   omniauth-google-oauth2
-  omniauth-rails_csrf_protection (~> 1.0)
+  omniauth-rails_csrf_protection
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)

@@ -24,13 +24,18 @@
 
   <div class="mb-3">
     <%= form.label :bich_text, class: "form-label" %>
-    <%= form.text_field :bich_text, class: "form-control"  %>
+    <%= form.text_area :bich_text, class: "form-control" %>
   </div>
 
-<!--  <div class="mb-3">-->
-    <%#= form.label :category, style: "display: block" %>
-    <%#= form.number_field :category %>
-<!--  </div>-->
+  <div class="d-none">
+    <%= form.label :user_id, class: "form-label" %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :category, style: "display: block" %>
+    <%= form.select :category, options_for_select(Category.all.map { |c| [c.category, c.id] }), {}, class: "form-control" %>
+  </div>
 
   <div>
     <%= form.submit class: "btn btn-primary" %>
