@@ -8,6 +8,7 @@
   <% @posts.each do |post| %>
     <div class="col-md my-2">
       <div class="card">
+        <img src="/assets/bob.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= post.title %></h5>
           <h6 class="card-subtitle mb-2 text-body-secondary"><%= post.subtitle %>(<%= Category.find(post.category).category %>)</h6>
