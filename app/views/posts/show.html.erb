@@ -20,7 +20,7 @@
 
 <h4>Comments</h4>
 <p>
-  <%= render @post.comments.order(id: :desc) %>
+  <%= render @post.comments.includes(:user).order(id: :desc) %>
 </p>
 
 <% if current_user %>
