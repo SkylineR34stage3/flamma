@@ -23,4 +23,6 @@
   <%= link_to "Back to posts", posts_path, class:"btn btn-info"%>
 </div>
 
-<%= button_to "Destroy this post", @post, method: :delete, class:"btn btn-danger" %>
+<% if User.find(@post.user_id) == current_user %>
+  <%= button_to "Destroy this post", @post, method: :delete, class:"btn btn-danger" %>
+<% end %>
