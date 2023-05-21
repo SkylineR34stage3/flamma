@@ -3,11 +3,19 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
+    @categories = Category.all
     @posts = Post.all
   end
 
   # GET /posts/1 or /posts/1.json
   def show
+    if params[:id] == "filter_by_category"
+      # Handle the case when the ID is "filter_by_category"
+      # Redirect or render a different view
+      redirect_to posts_path, notice: "Invalid post ID"
+    else
+      @post = Post.find(params[:id])
+    end
   end
 
   # GET /posts/new
@@ -19,9 +27,27 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def filter_by_category
+    category_id = params[:category_id]
+    if category_id.present?
+      @category = Category.find(category_id)
+      @posts = @category.posts
+    else
+      @posts = Post.all
+    end
+    @categories = Category.all
+
+    respond_to do |format|
+      format.html { render :index }
+      format.js   { render :index }
+    end
+  end
+
+
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
+    @post.category = Category.find(params[:post][:category_id])
 
     respond_to do |format|
       if @post.save
@@ -33,6 +59,7 @@ class PostsController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
@@ -65,6 +92,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :subtitle, :bich_text, :user_id, :comments, :category)
+      params.require(:post).permit(:title, :subtitle, :bich_text, :user_id, :comments, :category_id)
     end
 end

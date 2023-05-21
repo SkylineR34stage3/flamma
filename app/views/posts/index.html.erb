@@ -8,6 +8,12 @@
   <%= link_to "You must be logged in to create new post", new_user_session_path, class: "btn btn-danger" %>
 <% end %>
 
+<!-- Dropdown menu -->
+<%= form_tag filter_by_category_posts_path, method: :get do %>
+  <%= select_tag :category_id, options_from_collection_for_select(@categories, :id, :category, params[:category_id]), include_blank: 'All Categories' %>
+  <%= submit_tag 'Filter', data: { disable_with: 'Filtering...' }, remote: true %>
+<% end %>
+
 <div class="row" id="posts">
   <% @posts.each do |post| %>
     <div class="col-md my-2">
@@ -15,7 +21,7 @@
         <img src="/assets/bob.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= post.title %></h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary"><%= post.subtitle %>(<%= Category.find(post.category).category %>)</h6>
+          <h6 class="card-subtitle mb-2 text-body-secondary"><%= post.subtitle %>(<%= Category.find(post.category_id).category %>)</h6>
           <p class="card-text"><%= post.bich_text %></p>
           <p class="card-text">by: <%= User.find(post.user_id).name %></p>
           <p class="card-text">total Comments: <%= post.comments.size %></p>

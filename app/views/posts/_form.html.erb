@@ -33,8 +33,8 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :category, style: "display: block" %>
-    <%= form.select :category, options_for_select(Category.all.map { |c| [c.category, c.id] }), {}, class: "form-control" %>
+    <%= form.label :category_id, "Category" %>
+    <%= form.collection_select :category_id, Category.all, :id, :category, prompt: "Select category" %>
   </div>
 
   <div>
