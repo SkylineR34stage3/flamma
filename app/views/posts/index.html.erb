@@ -2,13 +2,20 @@
 
 <h1>Posts</h1>
 
-<%= link_to "Drop new post", new_post_path, class: "btn btn-primary" %>
+<%= link_to "Share your knowledge", new_post_path, class: "btn btn-primary" %>
 
 <div class="row" id="posts">
   <% @posts.each do |post| %>
     <div class="col-md my-2">
-      <%= render post %>
-        <%= link_to "Show this post", post %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= post.title %></h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary"><%= post.subtitle %>(<%= Category.find(post.category).category %>)</h6>
+          <p class="card-text"><%= post.bich_text %></p>
+          <p class="card-text">by: <%= User.find(post.user_id).name %></p>
+          <%= link_to "Show this post", post %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
