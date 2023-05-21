@@ -20,8 +20,14 @@
 
 <h4>Comments</h4>
 <p>
-  <%= render @post.comments %>
+  <%= render @post.comments.order(id: :desc) %>
 </p>
+
+<% if current_user %>
+  <%= render partial: 'comments/form', locals: { post: @post} %>
+<% else %>
+  <%= link_to "You must be logged in to comment", new_user_session_path, class: "btn btn-danger" %>
+<% end %>
 
 <div class="d-flex my-3" style="gap: 1rem">
   <%= link_to "Back to posts", posts_path, class:"btn btn-info"%>

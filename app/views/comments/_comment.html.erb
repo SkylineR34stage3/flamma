@@ -1,22 +1,5 @@
+<hr />
 <div id="<%= dom_id comment %>">
-  <p>
-    <strong>Text:</strong>
-    <%= comment.text %>
-  </p>
-
-  <p>
-    <strong>Post:</strong>
-    <%= comment.post_id %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= comment.user_id %>
-  </p>
-
-  <p>
-    <strong>Reply to:</strong>
-    <%= comment.reply_to %>
-  </p>
-
+  <p><%= comment.text %></p>
+  <small><%= comment.user.email %></small>
 </div>
