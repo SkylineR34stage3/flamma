@@ -6,6 +6,7 @@
   <% @users.each do |user| %>
     <div class="col-md my-2">
       <div class="card" style="max-width: 18rem">
+        <img src="/assets/bob.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">
             <%= user.try(:name).to_s + user.try(:lastname).to_s %>
