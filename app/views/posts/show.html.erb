@@ -18,9 +18,22 @@
   </div>
 </div>
 
+<h4>Comments</h4>
+<p>
+  <%= render @post.comments.where(parent_id: nil).includes(:user).order(id: :desc) %>
+</p>
+
+<% if current_user %>
+  <%= render partial: 'comments/form', locals: { post: @post, parent: nil } %>
+<% else %>
+  <%= link_to "You must be logged in to comment", new_user_session_path, class: "btn btn-danger" %>
+<% end %>
+
 <div class="d-flex my-3" style="gap: 1rem">
-  <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-warning" %>
   <%= link_to "Back to posts", posts_path, class:"btn btn-info"%>
 </div>
 
-<%= button_to "Destroy this post", @post, method: :delete, class:"btn btn-danger" %>
+<% if User.find(@post.user_id) == current_user %>
+  <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-warning" %>
+  <%= button_to "Destroy this post", @post, method: :delete, class:"btn btn-danger" %>
+<% end %>

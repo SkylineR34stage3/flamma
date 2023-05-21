@@ -1,22 +1,23 @@
 <div id="<%= dom_id comment %>">
-  <p>
-    <strong>Text:</strong>
-    <%= comment.text %>
-  </p>
+  <p><%= comment.text %></p>
+  <small><%= comment.user.email %></small>
 
-  <p>
-    <strong>Post:</strong>
-    <%= comment.post_id %>
-  </p>
+  <a href="#" class="comment-form-display">Reply</a>
+  <div class="comment-form" style="display: none">
+    <%= render partial: 'comments/form', locals: {post: comment.post, parent: comment} %>
+  </div>
 
-  <p>
-    <strong>User:</strong>
-    <%= comment.user_id %>
-  </p>
-
-  <p>
-    <strong>Reply to:</strong>
-    <%= comment.reply_to %>
-  </p>
-
+  <hr />
+  <div class="sub-comment" style="padding-left:20px;">
+    <%= render comment.comments.order(id: :desc) %>
+  </div>
 </div>
+
+<script>
+  document.querySelectorAll('.comment-form-display').forEach((el) => {
+      el.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          el.nextElementSibling.style = 'display: block;'
+      })
+  })
+</script>
