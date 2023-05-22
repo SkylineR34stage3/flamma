@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     collection do
       get :filter_by_category
+      post :search
     end
   end
   resources :roles

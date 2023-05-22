@@ -29,4 +29,26 @@ class Post < ApplicationRecord
   def category_name
     category&.category
   end
+
+  def self.search(query)
+    response = __elasticsearch__.search(
+      {
+        query: {
+          multi_match: {
+            query: query,
+            fields: %w[title subtitle bich_text user_name category_name]
+          }
+        }
+      }
+    )
+
+    # Extract the source documents from the hits
+    response.records.to_a.map(&:as_indexed_json)
+  end
+
+
+
+
+  # Create the Elasticsearch index if it doesn't exist
+  Post.__elasticsearch__.create_index! unless Post.__elasticsearch__.index_exists?
 end

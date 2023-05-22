@@ -43,6 +43,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def search
+    @posts = Post.search(params[:q])
+
+    respond_to do |format|
+      format.json { render json: @posts }
+    end
+  end
+
 
   # POST /posts or /posts.json
   def create
