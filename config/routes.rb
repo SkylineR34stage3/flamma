@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   end
   resources :roles
   resources :users
+
+  get "post_pdf/:id" => "pdf_download#export_pdf", as: "post_pdf"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
