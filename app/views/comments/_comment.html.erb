@@ -15,12 +15,13 @@
 </div>
 
 <script>
-    document.querySelectorAll('.comment-form-display').forEach((el) => {
-        el.addEventListener('click', (ev) => {
-            ev.preventDefault();
-            const form = el.nextElementSibling;
-            form.style.display = (form.style.display === 'none') ? 'block' : 'none';
-        });
+    document.addEventListener('click', (event) => {
+        if (event.target.matches('.comment-form-display')) {
+            event.preventDefault();
+            const replyLink = event.target;
+            const commentForm = replyLink.nextElementSibling;
+            commentForm.style.display = commentForm.style.display === 'none' ? 'block' : 'none';
+        }
     });
 </script>
 

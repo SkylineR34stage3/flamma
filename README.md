@@ -25,3 +25,7 @@ This is how to run all rails commands (eg. `rails g scaffold books title:string`
   * To check its name simply run `docker-compose ps` and get **NAME** (eg. _flamma-web-1_) from **web** **SERVICE**
 * Go to application folder: `cd myapp/`
 * Finally, You can run any rails command you want!
+
+# Elasticsearch
+
+to be done

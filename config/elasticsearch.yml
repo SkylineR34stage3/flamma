@@ -1,0 +1,6 @@
+development: &default
+  host: 'elasticsearch'
+test:
+  host: 'elasticsearch'
+production:
+  host: 'elasticsearch'

@@ -11,6 +11,7 @@
 /node_modules
 
 # Ignore all logfiles and tempfiles.
+/docker_data/*
 /log/*
 /tmp/*
 !/log/.keep

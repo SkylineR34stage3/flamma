@@ -79,3 +79,9 @@ gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
 gem 'kaminari'
 gem 'prawn'
+gem 'faker'
+gem 'bcrypt'
+
+gem "elasticsearch-rails", "~> 7.2"
+gem "elasticsearch-model", "~> 7.2"
+gem "elasticsearch-persistence", "~> 7.2"
