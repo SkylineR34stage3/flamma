@@ -2,17 +2,21 @@
 
 <h1>Posts</h1>
 
-<% if current_user %>
-  <%= link_to "Share your knowledge", new_post_path, class: "btn btn-primary" %>
-<% else %>
-  <%= link_to "You must be logged in to create new post", new_user_session_path, class: "btn btn-danger" %>
-<% end %>
+<div class="d-flex flex-wrap align-items-center" style="gap: 1rem">
+  <div>
+    <% if current_user %>
+      <%= link_to "Share your knowledge", new_post_path, class: "btn btn-primary" %>
+    <% else %>
+      <%= link_to "You must be logged in to create new post", new_user_session_path, class: "btn btn-danger" %>
+    <% end %>
+  </div>
 
-<!-- Dropdown menu -->
-<%= form_tag filter_by_category_posts_path, method: :get do %>
-  <%= select_tag :category_id, options_from_collection_for_select(@categories, :id, :category, params[:category_id]), include_blank: 'All Categories' %>
-  <%= submit_tag 'Filter', data: { disable_with: 'Filtering...' }, remote: true %>
-<% end %>
+  <%= form_tag filter_by_category_posts_path, method: :get, class: "d-flex" do %>
+    <%= select_tag :category_id, options_from_collection_for_select(@categories, :id, :category, params[:category_id]), include_blank: 'All Categories', class: "form-select" %>
+    <%= submit_tag 'Filter', data: { disable_with: 'Filtering...' }, remote: true, class: "btn btn-primary m-2" %>
+  <% end %>
+</div>
+
 
 <div class="row" id="posts">
   <% @posts.each do |post| %>
@@ -25,7 +29,7 @@
           <p class="card-text"><%= post.bich_text %></p>
           <p class="card-text">by: <%= User.find(post.user_id).name %></p>
           <p class="card-text">total Comments: <%= post.comments.size %></p>
-          <%= link_to "Show this post", post %>
+          <%= link_to "Show this post", post, class: "btn btn-primary" %>
         </div>
       </div>
     </div>

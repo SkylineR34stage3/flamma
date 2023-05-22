@@ -1,12 +1,12 @@
-<form action="<%= post_comments_path(post) %>" method="post">
+<form action="<%= post_comments_path(post) %>" method="post" class="mt-5">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <% unless parent.nil? %>
   <input type="hidden" name="comment[parent_id]" value="<%=  parent.id  %>">
   <%  end %>
 
   <div>
-    <textarea name="comment[text]" rows="6" cols="20"></textarea>
+    <textarea placeholder="share your important opinion:)" name="comment[text]" class="form-control"></textarea>
   </div>
 
-  <input type="submit" value="Submit">
+  <input type="submit" value="Leave a comment" class="btn btn-primary my-4">
 </form>

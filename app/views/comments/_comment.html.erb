@@ -1,23 +1,26 @@
-<div id="<%= dom_id comment %>">
-  <p><%= comment.text %></p>
-  <small><%= comment.user.email %></small>
-
+<div id="<%= dom_id comment %>" class="bg-light-subtle">
+  <div class="bg-primary-subtle p-2 rounded">
+    <h6><%= comment.user.name %></h6>
+    <p><%= comment.text %></p>
+  </div>
   <a href="#" class="comment-form-display">Reply</a>
-  <div class="comment-form" style="display: none">
-    <%= render partial: 'comments/form', locals: {post: comment.post, parent: comment} %>
+
+  <div class="comment-form" style="display: none;">
+    <%= render partial: 'comments/form', locals: { post: comment.post, parent: comment } %>
   </div>
 
-  <hr />
-  <div class="sub-comment" style="padding-left:20px;">
+  <div class="sub-comment ms-3 mt-2">
     <%= render comment.comments.order(id: :desc) %>
   </div>
 </div>
 
 <script>
-  document.querySelectorAll('.comment-form-display').forEach((el) => {
-      el.addEventListener('click', (ev) => {
-          ev.preventDefault();
-          el.nextElementSibling.style = 'display: block;'
-      })
-  })
+    document.querySelectorAll('.comment-form-display').forEach((el) => {
+        el.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            const form = el.nextElementSibling;
+            form.style.display = (form.style.display === 'none') ? 'block' : 'none';
+        });
+    });
 </script>
+

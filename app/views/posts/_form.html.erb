@@ -33,8 +33,8 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :category_id, "Category" %>
-    <%= form.collection_select :category_id, Category.all, :id, :category, prompt: "Select category" %>
+    <%= form.label :category_id, "Category", class: "form-label" %>
+    <%= form.select :category_id, Category.pluck(:category, :id), { prompt: "Select category" }, { class: "form-select" } %>
   </div>
 
   <div>
