@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :categories
   resources :posts do
     resources :comments, only: [:create]
+    collection do
+      get :filter_by_category
+    end
   end
   resources :roles
   resources :users
