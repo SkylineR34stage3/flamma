@@ -29,7 +29,7 @@
           <p class="card-text"><%= post.bich_text %></p>
           <p class="card-text">by: <%= User.find(post.user_id).name %></p>
           <p class="card-text">total Comments: <%= post.comments.size %></p>
-          <%= link_to "Show this post", post %>
+          <%= link_to "Show this post", post, class: "btn btn-primary" %>
         </div>
       </div>
     </div>
