@@ -2,12 +2,18 @@
 
 <h1>Posts</h1>
 
+<% unless current_user %>
+<div class="p-3 mb-2 bg-danger text-white">
+  You must be logged in to create new post
+      </div>
+<% end %>
+
 <div class="d-flex flex-wrap align-items-center" style="gap: 1rem">
   <div>
     <% if current_user %>
       <%= link_to "Share your knowledge", new_post_path, class: "btn btn-primary" %>
     <% else %>
-      <%= link_to "You must be logged in to create new post", new_user_session_path, class: "btn btn-danger" %>
+      <%= link_to "Login", new_user_session_path, class: "btn btn-primary" %>
     <% end %>
   </div>
 
