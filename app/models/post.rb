@@ -17,7 +17,7 @@ class Post < ApplicationRecord
 
   def as_indexed_json(_options = {})
     self.as_json(
-      only: %i[title subtitle bich_text],
+      only: %i[id title subtitle bich_text],
       methods: [:user_name, :category_name]
     )
   end

@@ -22,11 +22,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     dropdown.innerHTML = ''; // Clear the dropdown
 
+                    if (data.length > 0) {
+                        dropdown.classList.add('show'); // Show the dropdown if there are results
+                    } else {
+                        dropdown.classList.remove('show'); // Hide the dropdown if there are no results
+                    }
+
                     data.forEach(post => {
-                        var option = document.createElement('option');
-                        option.value = post.id;
-                        option.textContent = post.title;
-                        dropdown.appendChild(option);
+                        var link = document.createElement('a');
+                        link.href = '/posts/' + post.id; // This assumes that the show page URL is '/posts/:id'
+                        link.textContent = post.title;
+                        link.classList.add('dropdown-item'); // Add the 'dropdown-item' class
+                        dropdown.appendChild(link);
                     });
                 })
                 .catch(error => console.error('Error:', error));

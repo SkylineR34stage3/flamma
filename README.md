@@ -28,4 +28,13 @@ This is how to run all rails commands (eg. `rails g scaffold books title:string`
 
 # Elasticsearch
 
-to be done
+recreate Elasticsearch index 
+
+* Enter docker web container: `docker exec -it <name_of_your_web_container> bash`
+  * Please replace `<name_of_your_web_container>` with actual name of your container
+  * To check its name simply run `docker-compose ps` and get **NAME** (eg. _flamma-web-1_) from **web** **SERVICE**
+* Go to application folder: `cd myapp/`
+* Run `rails c`
+* Run `Post.__elasticsearch__.delete_index!`
+* Run `Post.__elasticsearch__.create_index!`
+* Run `Post.import` to repopulate the new index
