@@ -40,3 +40,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// comment nested system
+document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('click', (event) => {
+        if (event.target.matches('.comment-form-display')) {
+            event.preventDefault();
+            const replyLink = event.target;
+            const commentForm = replyLink.nextElementSibling;
+            commentForm.style.display = commentForm.style.display === 'none' ? 'block' : 'none';
+        }
+    });
+});
+
