@@ -29,11 +29,10 @@
   <%= link_to "You must be logged in to comment", new_user_session_path, class: "btn btn-danger" %>
 <% end %>
 
-<div class="d-flex my-3" style="gap: 1rem">
+<div class="d-flex my-3 flex-wrap" style="gap: 1rem">
   <%= link_to "Back to posts", posts_path, class:"btn btn-info"%>
+  <% if User.find(@post.user_id) == current_user %>
+    <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-warning" %>
+    <%= button_to "Destroy this post", @post, method: :delete, class:"btn btn-danger" %>
+  <% end %>
 </div>
-
-<% if User.find(@post.user_id) == current_user %>
-  <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-warning" %>
-  <%= button_to "Destroy this post", @post, method: :delete, class:"btn btn-danger" %>
-<% end %>
