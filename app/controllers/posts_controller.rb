@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @categories = Category.all
-    @posts = Post.paginate(page: params[:page], per_page: 5)
+    @posts = Post.paginate(page: params[:page], per_page: 9)
   end
 
   # GET /posts/1 or /posts/1.json

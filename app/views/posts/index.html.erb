@@ -45,7 +45,7 @@
 <%= will_paginate @posts %>
 
 <style>
-    .pagination a, .pagination span.current, .pagination span.gap {
+    .pagination a, .pagination em, .pagination span.current, .pagination span.gap, .pagination span {
         float: left;
         padding: 0 14px;
         line-height: 38px;
@@ -63,11 +63,13 @@
         float: none;
         border: none;
     }
-    .prev {
+
+    .previous_page {
         padding : 0;
         float: none;
         border: none;
     }
+
     .page{
         padding : 0;
         float: none;
