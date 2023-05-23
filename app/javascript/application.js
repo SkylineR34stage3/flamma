@@ -53,3 +53,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// posts slider
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.querySelector('.slider');
+    if (slider) {
+        slider.classList.add('custom-scrollbar');
+        // Make links to posts blue
+        $('.slider a').addClass('text-decoration-none text-primary');
+    }
+});

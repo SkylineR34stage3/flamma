@@ -12,7 +12,11 @@
             <%= (user.try(:name).to_s + user.try(:lastname).to_s).empty? ? user.email.sub(/@gmail\.com$/, "") : user.try(:name).to_s + user.try(:lastname).to_s %>
           </h5>
           <p class="card-text">
-            role
+            <% if user.role %>
+              Role: <%= user.role.role %>
+            <% else %>
+              Role: User
+            <% end %>
           </p>
           <%= link_to "Show this user", user, class: "btn btn-primary" %>
         </div>
