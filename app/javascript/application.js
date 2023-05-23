@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var searchInput = document.getElementById('search-input');
-    var searchPath = document.getElementById('search-path').dataset.url;
+    const searchInput = document.getElementById('search-input');
+    const searchPath = document.getElementById('search-path').dataset.url;
 
     searchInput.addEventListener('input', function() {
-        var query = this.value;
+        let query = this.value;
 
         if (query.length > 2) {
             fetch(searchPath, {
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(data => {
                     console.log(data); // Add this line to log the response data
 
-                    var dropdown = document.getElementById('related-posts-dropdown');
+                    const dropdown = document.getElementById('related-posts-dropdown');
 
                     dropdown.innerHTML = ''; // Clear the dropdown
 
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
 
                     data.forEach(post => {
-                        var link = document.createElement('a');
+                        const link = document.createElement('a');
                         link.href = '/posts/' + post.id; // This assumes that the show page URL is '/posts/:id'
                         link.textContent = post.title;
                         link.classList.add('dropdown-item'); // Add the 'dropdown-item' class

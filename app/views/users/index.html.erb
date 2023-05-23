@@ -2,14 +2,14 @@
 
 <h2>Our users</h2>
 
-<div class="row" id="users">
+<div class="row justify-content-start" id="users">
   <% @users.each do |user| %>
-    <div class="col-md my-2">
+    <div class="col-sm-4 my-2">
       <div class="card" style="max-width: 18rem">
         <img src="/assets/bob.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">
-            <%= user.try(:name).to_s + user.try(:lastname).to_s %>
+            <%= (user.try(:name).to_s + user.try(:lastname).to_s).empty? ? user.email.sub(/@gmail\.com$/, "") : user.try(:name).to_s + user.try(:lastname).to_s %>
           </h5>
           <p class="card-text">
             role
@@ -24,7 +24,7 @@
 <%= will_paginate @users %>
 
 <style>
-    .pagination a, .pagination span.current, .pagination span.gap {
+    .pagination a, .pagination em, .pagination span.current, .pagination span.gap, .pagination span {
         float: left;
         padding: 0 14px;
         line-height: 38px;
@@ -42,11 +42,13 @@
         float: none;
         border: none;
     }
-    .prev {
+
+    .previous_page {
         padding : 0;
         float: none;
         border: none;
     }
+
     .page{
         padding : 0;
         float: none;
