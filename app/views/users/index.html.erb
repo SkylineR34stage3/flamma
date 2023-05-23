@@ -9,7 +9,7 @@
         <img src="/assets/bob.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">
-            <%= user.try(:name).to_s + user.try(:lastname).to_s %>
+            <%= (user.try(:name).to_s + user.try(:lastname).to_s).empty? ? user.email.sub(/@gmail\.com$/, "") : user.try(:name).to_s + user.try(:lastname).to_s %>
           </h5>
           <p class="card-text">
             role

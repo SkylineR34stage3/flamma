@@ -16,7 +16,7 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary p-3">
     <div class="container-fluid">
       <a class="navbar-brand" href="/"><img width="35" height="35" src="/assets/logo.svg" alt="logo"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +34,7 @@
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Hello, <%= current_user.name %>!
+                Hello, <%= current_user.name ? current_user.name : current_user.email.sub(/@gmail\.com$/, "") %>!
               </a>
               <ul class="dropdown-menu">
                 <li>
@@ -52,7 +52,7 @@
           <% end %>
         </ul>
         <div id="search-path" data-url="<%= search_posts_path(format: :json) %>" style="display: none;"></div>
-        <% if request.path == '/users' || request.path == '/posts'%>
+        <% if request.path == '/posts'%>
           <div class="position-relative"> <!-- Add a new div to create a new positioning context -->
             <form class="d-flex" role="search" action="<%= search_posts_path(format: :json) %>" method="post">
               <input id="search-input" class="form-control" type="search" name="q" placeholder="Search" aria-label="Search">
