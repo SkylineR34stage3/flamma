@@ -8,18 +8,90 @@
         <h5 class="card-title">
           <%= (@user.try(:name).to_s + @user.try(:lastname).to_s).empty? ? @user.email.sub(/@gmail\.com$/, "") : @user.try(:name).to_s + @user.try(:lastname).to_s %>
         </h5>
-        <!-- добавить роль -->
         <p class="card-text">
           <small class="text-body-secondary">
-            role
+            <% if @user.role %>
+              Role: <%= @user.role.role %>
+            <% else %>
+              Role: User
+            <% end %>
           </small>
         </p>
-        <!-- добавить ссылки на посты пользователя -->
-        <p class="card-text">
+        <h5 class="card-text">
           Posts:
-        </p>
+        </h5>
+        <div class="slider-container">
+          <% if @user.posts.any? %>
+            <ul class="slider">
+              <% @user.posts.each do |post| %>
+                <li>
+                  <%= link_to post.title, post_path(post) %>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p>No posts available.</p>
+          <% end %>
+        </div>
+
         <%= link_to "Back to users", users_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>
 </div>
+
+<style>
+    .slider-container {
+        max-width: 540px;
+        margin: 0 auto;
+    }
+
+    .slider {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .slider li {
+        padding: 10px;
+    }
+
+    .slider a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .custom-scrollbar {
+        max-height: 200px; /* Adjust the height as desired */
+        overflow-y: auto;
+    }
+
+    /* Dim the scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Add numeration to each post */
+    .slider li {
+        position: relative;
+    }
+
+    .slider li::before {
+        content: attr(data-index);
+        position: absolute;
+        left: -20px;
+        top: 0;
+        width: 20px;
+        text-align: right;
+        color: #999;
+    }
+</style>
