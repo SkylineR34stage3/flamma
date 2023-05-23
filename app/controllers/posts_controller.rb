@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @categories = Category.all
-    @posts = Post.all.page(params[:page] || 1).per(5)
+    @posts = Post.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -31,15 +31,24 @@ class PostsController < ApplicationController
     category_id = params[:category_id]
     if category_id.present?
       @category = Category.find(category_id)
-      @posts = @category.posts
+      @posts = @category.posts.paginate(page: params[:page], per_page: 5)
     else
-      @posts = Post.all
+      @posts = Post.paginate(page: params[:page], per_page: 5)
     end
     @categories = Category.all
 
     respond_to do |format|
       format.html { render :index }
-      format.js   { render :index }
+      format.js { render :index }
+    end
+  end
+
+
+  def search
+    @posts = Post.search(params[:q])
+
+    respond_to do |format|
+      format.json { render json: @posts }
     end
   end
 

@@ -51,12 +51,19 @@
             </li>
           <% end %>
         </ul>
+        <div id="search-path" data-url="<%= search_posts_path(format: :json) %>" style="display: none;"></div>
         <% if request.path == '/users' || request.path == '/posts'%>
-          <form class="d-flex" role="search">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
-          </form>
-        <% end %>
+          <div class="position-relative"> <!-- Add a new div to create a new positioning context -->
+            <form class="d-flex" role="search" action="<%= search_posts_path(format: :json) %>" method="post">
+              <input id="search-input" class="form-control" type="search" name="q" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+            <!-- Place your dropdown inside this div, below your form -->
+            <div class="dropdown">
+              <div id="related-posts-dropdown" class="dropdown-menu"></div>
+            </div>
+          </div>
+      <% end %>
       </div>
     </div>
   </nav>
@@ -67,5 +74,7 @@
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+  <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
   </body>
 </html>

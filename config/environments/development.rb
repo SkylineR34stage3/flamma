@@ -73,4 +73,15 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+=begin
+
+  config.elasticsearch = {
+    host: 'localhost:9200',
+    transport_options: {
+      request: { timeout: 5 }
+    }
+  }
+
+  Elasticsearch::Model.client = Elasticsearch::Client.new(config.elasticsearch)
+=end
 end
